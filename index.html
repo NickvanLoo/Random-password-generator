@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Random wachtwoord generator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="inputBox">
+            <h2> Random wachtwoord generator </h2>
+            <input type="text" name="wachtwoord_generator" placeholder="Genereer een wachtwoord" id="wachtwoord" readonly="">
+            <button onclick="genereerWachtwoord();">Genereer een wachtwoord</button>
+            <button onclick="kopieerWachtwoord()">Kopieer wachtwoord</button>
+        </div>
+        <script type="text/javascript">
+            function genereerWachtwoord() {
+                var tekens = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$$%^&*(){}[]";
+                var wachtwoord_lengte = 16;
+                var wachtwoord = "";
+
+                for (var i = 0; i < wachtwoord_lengte; i++) {
+                    var random_nummer = Math.floor(Math.random() * tekens.length);
+                    wachtwoord += tekens.substring(random_nummer, random_nummer + 1);
+                }
+                document.getElementById("wachtwoord").value = wachtwoord;
+            }
+            function kopieerWachtwoord() {
+                var kopieerTekst = document.getElementById("wachtwoord");
+                kopieerTekst.select();
+                kopieerTekst.setSelectionRange(0, 99999)
+                document.execCommand("copy");
+                alert("Je hebt het volgende wachtwoord gekopieerd: " + kopieerTekst.value);
+            }
+        </script>
+    </body>
+    <footer>&copy;2021 Gemaakt door Nick </footer>
+</html>
